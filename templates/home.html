@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <!-- Load Bootstrap -->
+    <link crossorigin="anonymous" href=
+            "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity=
+                  "sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+          rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity=
+                    "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            src=
+                    "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">
+    </script>
+    <script crossorigin="anonymous"
+            integrity=
+                    "sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            src=
+                    "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js">
+    </script>
+
+</head>
+
+<body>
+<div class="container mt-3">
+    <h1 style="color: blue;">
+        Airfoil Pressure Prediction
+    </h1>
+    <div class="container mt-3" style="width: 600px;">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ url_for('predict')}}" method="post">
+                    <div class="mb-3">
+                        <input aria-describedby="emailHelp" class="form-control" id="Frequency"
+                               name="Frequency" placeholder="Frequency" required="required" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <input aria-describedby="emailHelp" class="form-control" id="aog"
+                               name="Angle of attack" placeholder="Angle of attack" required="required" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <input aria-describedby="emailHelp" class="form-control" id="chordLength"
+                               name="Chord length" placeholder="Chord length" required="required" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <input aria-describedby="emailHelp" class="form-control" id="freeStreamVelocity"
+                               name="Free-stream velocity" placeholder="Free-stream velocity" required="required" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <input aria-describedby="emailHelp" class="form-control" id="suctionSide"
+                               name="Suction side" placeholder="Suction side" required="required" type="text">
+                    </div>
+                    <button class="btn btn-secondary" type="submit">Predict Airfoil Pressure</button>
+                </form>
+            </div>
+        </div>
+        <br/>
+        <em>{{prediction_text}}</em>
+    </div>
+</div>
+</body>
+</html>
